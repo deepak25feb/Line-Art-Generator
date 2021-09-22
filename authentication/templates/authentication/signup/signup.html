@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'signup-static/signup-style.css' %}" >
+    <title>Signup</title>
+</head>
+<body>
+    <h1>Sign up Page</h1>
+    <header>
+        <h1>SIGN-UP</h1>
+    </header>
+    <section>
+            {% csrf_token %}
+            <p id="errormessage"></p>
+            <input type="text" name="username" id="username" placeholder="User Name" required>
+            <input type="email" name="emailid" id="email" placeholder="Email ID" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <button id="submit">SUBMIT</button>
+            <a href="../login/">LOGIN</a>
+    </section>
+    <script src="{% static 'signup-static/signup-script.js' %}" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body {
+            background-color: rgb(255, 255, 255);
+        } */
+        hr{
+            margin-left: 2%;
+            margin-right: 2%;
+            border : 1px solid #8e8e8e
+        }
+        .--nav_nav-links{
+            display: flex;
+            max-width: 100%;
+            border: 2px rgba(250, 195, 195, 0.796) solid;
+            background-color: #FBDA61;
+            margin: 1% 2% 1% 2%;
+            /* padding: 1%; */
+        }
+        #--nav_logo{
+            flex:4;
+            border: 1px rgb(255, 0, 255) solid;
+            border-right: none;
+            padding : 1%;
+        }
+        #--nav_logo:hover{
+            background-color: #FBDA61;
+            background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #--nav_upload{
+            flex: 1;
+            border: 1px rgb(255, 0, 255) solid;
+            padding : 1%;
+            border-right: none;
+            border-left: none;
+            text-align: center;
+        }
+        #--nav_upload:hover{
+            background-color: #FBDA61;
+            background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #--nav_explore{
+            flex: 1;
+            border: 1px rgb(255, 0, 255) solid;
+            padding : 1%;
+            border-right: none;
+            border-left: none;
+            text-align: center;
+        }
+        #--nav_explore:hover{
+            background-color: #FBDA61;
+            background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #--nav_setting{
+            flex: 1;
+            border: 1px rgb(255, 0, 255) solid;
+            padding : 1%;
+            border-left: none;
+            text-align: center;
+        }
+        #--nav_setting:hover{
+            background-color: #FBDA61;
+            background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        /* Profile Header */
+        .--nav_profile-body{
+            
+            margin-top: 1%;
+            background-color: rgba(249, 252, 193, 0.255);
+            display: flex;
+        }
+
+        #--nav_profile-photo{
+            max-height: 150px;
+            max-width: 150px;
+            border: 2px rgb(255, 0, 255) solid;
+            border-radius: 100px ;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .--nav_image-wrapper{
+            display: inline-block;
+            padding: 2%;
+            text-align: center;
+            margin-right: 5%;
+            margin-left: 25%;
+            
+        }
+        .--nav_user{
+            font-size: 3rem;
+            align-self: center;
+        }
+
+        .--nav_main-body-line{
+            margin: 0 20% 1% 20%;
+            border : 1px solid #8e8e8e
+        }
+
+        .--nav_main-body{
+            border: 1px solid black;
+            margin: 0 20% 0 20%;
+        }
+
+        .--nav_href-img{
+            max-width: 25px;
+            max-height: 20px;
+        }
+
+        #--nav_logo-text{
+            font-family: cursive;
+            text-decoration: none;
+            inherits: none;
+        }
+
+
+    </style>
+    <script  type="text/javascript" defer>
+    // Very Bad Practise --> Need to Learn how Css and Html Work Together --> hopefully soon
+        function redirectHome(){
+            window.location.replace("../"); // Jump to Home Page
+        };
+        
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="--nav_nav-links">
+            
+            <div id="--nav_logo" onclick="redirectHome()" title="Logo">
+                <!-- <a id="special" href="http://127.0.0.1:8000/home/">      -->
+                    <span id="--nav_logo-text">Line Art Convertor </span>
+                    <img class="--nav_href-img" src="https://static.thenounproject.com/png/3466079-200.png"  alt="">
+                <!-- </a> -->
+            </div>
+            
+            <div id="--nav_explore"  title="Upload">
+                <a href="../explore/">
+                    <img class="--nav_href-img" src="https://icon-library.com/images/upload-icon/upload-icon-20.jpg" alt="">
+                </a>
+            </div>
+            <div id="--nav_upload" title="Explore">
+                <a href="../upload/">
+                    <img class="--nav_href-img" src="https://static.thenounproject.com/png/106294-200.png" alt="" >
+                </a>
+            </div>
+            <div id="--nav_setting" title="Setting">
+                <a href="../settings/">
+                    <img class="--nav_href-img" src="https://static.thenounproject.com/png/1469887-200.png" alt="" >
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+</body>
+</html>
+
+
+

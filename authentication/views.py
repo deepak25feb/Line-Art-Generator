@@ -7,3 +7,6 @@ def showLoginPage(request):
 
 def showSignUpPage(request):
     return render(request,'authentication/signup/signup.html')
+
+def showResetPasswordPage(request):
+    return render(request,'authentication/resetpage/resetpassword.html')

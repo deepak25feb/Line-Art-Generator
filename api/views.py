@@ -55,3 +55,37 @@ def logoutUser(request):
         
     print(payload,"**********")
     return Response(payload)
+
+
+@api_view(['POST'])
+def resetUser(request):
+    payload = [{"resetsuccess":False}]
+    logoutStatus = request.data['logged']  # if True user was logged in else Guest User fired Reset Password
+    if logoutStatus:
+        request.session.flush()
+        payload[0]["resetsuccess"] = True
+    
+        
+    print(payload,"****Reset******")
+    return Response(payload)
+
+
+
+
+@api_view(['POST'])
+def resetGuestUser(request):
+    payload = [{"error":True,"email_status":False,"c_password_status":False,"n_password_status":False}]
+    emailid = request.data['emailid']
+    c_password = request.data['c_password']
+    n_password = request.data['n_password']
+    user = User.objects.filter(emailid=emailid).first() 
+    if user is not None:    #Email id is correct
+        payload[0]["email_status"] = True
+        if user.password == c_password:
+            payload[0]["c_password_status"] = True
+            User.objects.filter(emailid=emailid).update(password=n_password)
+            payload[0]["n_password_status"] = True
+            payload[0]["error"] = False
+
+
+    return Response(payload)

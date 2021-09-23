@@ -5,4 +5,6 @@ from .views import *
 urlpatterns = [
    path('login/',showLoginPage),
    path('signup/',showSignUpPage),
+   path('resetPassword/',showResetPasswordPage),
+   
 ]

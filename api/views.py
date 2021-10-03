@@ -2,6 +2,9 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from user.models import *
+from django.shortcuts import redirect, render
+import cv2
+from django.core.files.base import ContentFile
 
 @api_view(['POST'])
 def loginUser(request):
@@ -89,3 +92,43 @@ def resetGuestUser(request):
 
 
     return Response(payload)
+
+
+@api_view(['POST'])
+def uploadUserImage(request):
+    value = request.session.get("status")  # Checking User Status 1 -> Logged , None : Not Logged
+    if value is None:
+        return redirect('../login/')
+    
+    user = User.objects.get(username=request.session.get("username"))
+    print("------->"+str(request.POST)+str(request.FILES))
+    photoRef = Photos.objects.create(username=user,image=request.FILES.get('image'))
+    ##############################################
+    print("---->>>",photoRef,"------------",photoRef.image.path)
+    convertedImage = converToLineArt(photoRef.image.path) # Converting Line Art Image
+    binarFormatImage = cv2.imencode('.jpg', convertedImage)[1].tostring()
+    file = ContentFile(binarFormatImage)
+    print("...2..",ContentFile)
+    Inst = ConvertedPhotos.objects.create(photooriginal=photoRef)
+    Inst.imageconverted.save('translated.jpg', file, save=True)
+    print("DONE--------------------")
+    return redirect('../../') #This should redirect to Conversion Page [Art Line Conversion]
+    
+  
+def converToLineArt(image):
+    
+    image_data = cv2.imread(image)
+   
+    gray_image = cv2.cvtColor(image_data, cv2.COLOR_BGR2GRAY)
+  
+    inverted_image = 255 - gray_image
+
+    blurred = cv2.GaussianBlur(inverted_image, (21, 21), 0)
+ 
+    inverted_blurred = 255 - blurred
+  
+    pencil_sketch = cv2.divide(gray_image, inverted_blurred, scale=256.0)
+ 
+    return pencil_sketch
+
+

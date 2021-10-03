@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout/', logoutUser),
     path('resetpassword/', resetUser), # Make all User Guest
     path('resetGuestUser/', resetGuestUser), #All user end up Guest User
+    path('upload-image/',uploadUserImage)
     
     
 ]

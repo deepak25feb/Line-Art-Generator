@@ -5,11 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'homepage-static/homepage-style.css' %}">
     <title>Document</title>
 </head>
 <body>
     {% include 'home/common-nav-bar/nav-bar.html'%} <!-- Tried well enough to not get style conflicts-->
     <h1>Home Page</h1> 
-    
+    <section class="profile-body">
+        <div class="image-wrapper">
+            <!-- <img id= "profile-photo" src='{{ profilephoto.url }}' /> -->
+        </div>
+        <div class="user">
+            <!-- <p>{{username}}</p> -->
+           
+        </div>
+    </section>
+    <hr class="main-body-line">
+    <main class="main-body">
+        <!-- <img src='{{ profilephoto.url }}' />
+        <img src='{{ profilephoto.url }}' />
+        <img src='{{ profilephoto.url }}' /> -->
+        {% for image in images %}
+        <div class="img-container">
+        <img src="{{ image.url }}" alt="" style="max-height: 300px; max-width: 300px;">
+        </div>
+        {% endfor %}
+    </main>
+    <script src="{% static 'homepage-static/homepage-script.js' %}" defer></script>
 </body>
 </html>

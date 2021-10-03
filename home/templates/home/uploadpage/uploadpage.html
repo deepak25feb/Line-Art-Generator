@@ -5,10 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'uploadpage-static/upload-css.css' %}">
     <title>Document</title>
 </head>
 <body>
     {% include 'home/common-nav-bar/nav-bar.html'%} <!-- Tried well enough to not get style conflicts-->
-    <h1>Upload Page</h1>
+    
+    <section class="form-body">
+        <h1>Upload Image</h1>
+        <form method="POST" enctype="multipart/form-data" action="../api/upload-image/">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="SUBMIT">
+        </form>
+    </section>
+    <script src="{% static 'uploadpage-static/upload-script.js' %}" defer></script>
 </body>
 </html>

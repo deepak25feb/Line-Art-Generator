@@ -101,16 +101,17 @@ def uploadUserImage(request):
         return redirect('../login/')
     
     user = User.objects.get(username=request.session.get("username"))
-    print("------->"+str(request.POST)+str(request.FILES))
+    #print("------->"+str(request.POST)+str(request.FILES.get('image')))
     photoRef = Photos.objects.create(username=user,image=request.FILES.get('image'))
-    ##############################################
-    print("---->>>",photoRef,"------------",photoRef.image.path)
+    # ##############################################
+    # print("---->>>",photoRef,"------------",photoRef.image.path)
     convertedImage = converToLineArt(photoRef.image.path) # Converting Line Art Image
     binarFormatImage = cv2.imencode('.jpg', convertedImage)[1].tostring()
     file = ContentFile(binarFormatImage)
-    print("...2..",ContentFile)
-    Inst = ConvertedPhotos.objects.create(photooriginal=photoRef)
-    Inst.imageconverted.save('translated.jpg', file, save=True)
+    photoRef.imageconverted.save('translated.jpg', file, save=True)
+    # print("...2..",file)
+    # Inst = ConvertedPhotos.objects.create(photooriginal=photoRef)
+    # Inst.imageconverted.save('translated.jpg', file, save=True)
     print("DONE--------------------")
     return redirect('../../') #This should redirect to Conversion Page [Art Line Conversion]
     

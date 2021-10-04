@@ -4,4 +4,4 @@ from .models import *
 
 admin.site.register(User)
 admin.site.register(Photos) # Store All User Uploaded Normal Images 
-admin.site.register(ConvertedPhotos) # Store All User Converted Art Line Images 
+ 

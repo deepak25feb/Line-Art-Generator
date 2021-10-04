@@ -61,11 +61,17 @@ def showExplorePage(request):
     
     userName = request.session.get("username")
     userData = User.objects.filter(username=userName).first()
-    userAllOriginalPhotos = Photos.objects.filter(username = userData).all()
-    print("----***",list(userAllOriginalPhotos))
-    obj = list(userAllOriginalPhotos)
-    aXX = ConvertedPhotos.objects.get(photooriginal = 31)
-    print("_____________",aXX)
+    userPhotos = Photos.objects.filter(username = userData).all()
+    print("HHHHHHHH->",userPhotos)
+    context = {"data":[]}
+    for imageObj in list(userPhotos):
+        context["data"].append(imageObj.image)
+        context["data"].append(imageObj.imageconverted)
+    print("HHHHHHHH----------------->",context)
+    # print("----***",list(userAllOriginalPhotos))
+    # obj = list(userAllOriginalPhotos)
+    # aXX = ConvertedPhotos.objects.get(photooriginal = 31)
+    # print("_____________",aXX)
     # request.session.flush();
     #print("RRRRRRRRRRRRRRRRRRR",ConvertedPhotos.objects.get(photooriginal=list(userAllOriginalPhotos)[0]))
     # context = []
@@ -75,5 +81,5 @@ def showExplorePage(request):
     #     context.append((PhotosObj.image,userTranslatedPhoto.imageconverted))
     # print(context)
 
-    return render(request,'home/explorepage/explorepage.html')
+    return render(request,'home/explorepage/explorepage.html',context)
     

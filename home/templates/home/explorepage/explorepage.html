@@ -5,17 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'explore-static/explore-style.css' %}">
     <title>Document</title>
 </head>
 <body>
     {% include 'home/common-nav-bar/nav-bar.html'%} <!-- Tried well enough to not get style conflicts-->
-    <h1>Explore Page</h1>
-    {% for image in data %}
     
-    <div class="img-container">
-    <img src="{{ image.url }}" alt="" style="max-height: 300px; max-width: 300px;">
-    </div>
-   
-    {% endfor %}
+
+    <hr class="main-body-line">
+    <main class="main-body">
+        {% for user,image in data %}
+        <div class="img-container">
+        <img src="{{ image.url }}" alt="" style="max-height: 300px; max-width: 300px;" title="{{ user }}">
+        </div>
+        {% endfor %}
+    </main>
+    <script src="{% static 'explore-static/explore-script.js' %}" defer></script>
 </body>
 </html>

@@ -19,4 +19,11 @@ class Photos(models.Model):
         return str(self.username)
 
 
+class ProfilePhotos(models.Model):
+    username = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
+    profilephoto = models.ImageField(null=True,blank=True,upload_to='usersphotos/',default="default.png")
+    def __str__(self):
+        return str(self.username)
+
+
 

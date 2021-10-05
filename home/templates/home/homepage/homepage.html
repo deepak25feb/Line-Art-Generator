@@ -10,16 +10,17 @@
 </head>
 <body>
     {% include 'home/common-nav-bar/nav-bar.html'%} <!-- Tried well enough to not get style conflicts-->
-    <h1>Home Page</h1> 
+     
     <section class="profile-body">
         <div class="image-wrapper">
-            <!-- <img id= "profile-photo" src='{{ profilephoto.url }}' /> -->
+            <img id= "profile-photo" src='{{ profilephoto.url }}' />
         </div>
         <div class="user">
-            <!-- <p>{{username}}</p> -->
+            <p>{{username}}</p>
            
         </div>
     </section>
+
     <hr class="main-body-line">
     <main class="main-body">
         <!-- <img src='{{ profilephoto.url }}' />

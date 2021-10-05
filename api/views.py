@@ -38,7 +38,8 @@ def signUpUser(request):
         if username_check is None:
             payload[0]["username_status"] = "valid"
             payload[0]["error"] = False
-            User.objects.create(username=userName,emailid=userEmail,password=userPassword) # Saving User to Database
+            UserObj = User.objects.create(username=userName,emailid=userEmail,password=userPassword) # Saving User to Database
+            ProfilePhotos.objects.create(username=UserObj)
             request.session["status"] = 1 # Setting User Session
             request.session["username"] = userName
             request.session["emailid"] = userEmail

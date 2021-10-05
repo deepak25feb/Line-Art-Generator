@@ -11,12 +11,15 @@ def showHomePage(request):
 
     user = User.objects.get(username=request.session.get("username")) # Getting User name from session
     i =  Photos.objects.filter(username=user) #Getting All Images from that User
+    profilePhoto = ProfilePhotos.objects.get(username=user)
     images = []
     for imag_e in i:
         images.append(imag_e.image)
+        images.append(imag_e.imageconverted)
 
     context= {
-        "name":user,
+        "username":user.username,
+        "profilephoto":profilePhoto.profilephoto,
         "images":images
     }
     # profilePhoto = UserData.objects.get(username=request.session.get("username"))
@@ -59,14 +62,23 @@ def showExplorePage(request):
     if value is None:
         return redirect('/login/')
     
-    userName = request.session.get("username")
-    userData = User.objects.filter(username=userName).first()
-    userPhotos = Photos.objects.filter(username = userData).all()
-    print("HHHHHHHH->",userPhotos)
+    # userName = request.session.get("username")
+    # userData = User.objects.filter(username=userName).first()
+    # userPhotos = Photos.objects.filter(username = userData).all()
+    # print("HHHHHHHH->",userPhotos)
+    # context = {"data":[]}
+    # for imageObj in list(userPhotos):
+    #     context["data"].append(imageObj.image)
+    #     context["data"].append(imageObj.imageconverted)
+    # print("HHHHHHHH----------------->",context)
+    #00000000000000000000000000000000000000000000000000000000000000000000000000000000
     context = {"data":[]}
-    for imageObj in list(userPhotos):
-        context["data"].append(imageObj.image)
-        context["data"].append(imageObj.imageconverted)
+    userQuery = User.objects.all()
+    for user in list(userQuery):
+        userConvertedPhotos = Photos.objects.filter(username = user).all()
+        for imageObj in list(userConvertedPhotos):
+            context["data"].append((user.username,imageObj.imageconverted))
+
     print("HHHHHHHH----------------->",context)
     # print("----***",list(userAllOriginalPhotos))
     # obj = list(userAllOriginalPhotos)

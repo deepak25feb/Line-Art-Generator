@@ -16,3 +16,6 @@ Step 2 : Clone this project
 
 Step 3 : Run the project 
 > `python .\manage.py runserver`
+
+
+Dont Try to Copy Beacuse It will be a waste of time for You!!!! [Lot of dependency of Project is purposely Hidden]

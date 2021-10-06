@@ -2,9 +2,11 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from user.models import *
+from user.forms import *
 from django.shortcuts import redirect, render
 import cv2
 from django.core.files.base import ContentFile
+import os
 
 @api_view(['POST'])
 def loginUser(request):
@@ -115,7 +117,27 @@ def uploadUserImage(request):
     # Inst.imageconverted.save('translated.jpg', file, save=True)
     print("DONE--------------------")
     return redirect('../../') #This should redirect to Conversion Page [Art Line Conversion]
-    
+
+
+@api_view(['POST'])
+def uploadUserProfileImage(request):
+    value = request.session.get("status")  # Checking User Status 1 -> Logged , None : Not Logged
+    if value is None:
+        return redirect('../login/')
+    #After Unity Do this - https://stackoverflow.com/questions/63298721/how-to-update-imagefield-in-django
+    # user = User.objects.get(username=request.session.get("username"))
+    # #ProfilePhotos.objects.filter(username=user).update(profilephoto=request.FILES.get('profilephoto'))
+    # userprofilePhoto = ProfilePhotos.objects.filter(username=user)
+    # form = ProfilePhotosForm(request.POST, request.FILES, instance=userprofilePhoto)
+    # image_path = userprofilePhoto.profilephoto.path
+    # if os.path.exists(image_path):
+    #     os.remove(image_path)
+    # form.save()
+    return redirect('../../') #This should redirect to Conversion Page [Art Line Conversion]
+
+
+
+
   
 def converToLineArt(image):
     

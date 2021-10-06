@@ -35,11 +35,14 @@ def showSettingPage(request):
     value = request.session.get("status")  # Checking User Status 1 -> Logged , None : Not Logged
     if value is None:
         return redirect('/login/')
+    
+    Profileform = ProfilePhotosForm()
     userName = request.session["username"]
     userEmailId = request.session["emailid"]
     context = {
         "username":userName,
-        "useremail":userEmailId
+        "useremail":userEmailId,
+        "form":Profileform
     }
     return render(request,'home/settingpage/settingpage.html',context) 
 

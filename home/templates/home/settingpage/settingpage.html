@@ -11,11 +11,18 @@
 <body>
     {% include 'home/common-nav-bar/nav-bar.html'%} <!-- Tried well enough to not get style conflicts-->
     <h1>Setting Page</h1>
+    
     <h3>Username : {{ username }}</h3>
     <h3>Email ID : {{ useremail }}</h3>
     <h3>Password :</h3>
-    <button id="resetUser">Reset Password</button>
-    <h3>Profile Photo : Update</h3>
+    <button id="resetUser">Reset Password</button><br><br>
+    <form method="POST" enctype="multipart/form-data" action="../api/upload-profile-image/">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="SUBMIT">
+    </form>
+    <br>
+    
     <button id="logoutUser">Logout</button>
 <script src="{% static 'settingpage-static/setting-script.js' %}" defer></script>
 </body>

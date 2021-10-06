@@ -7,3 +7,9 @@ class PhotosForm(ModelForm):
         model = Photos
         fields = ['image']
         #fields = '__all__'
+
+class ProfilePhotosForm(ModelForm):
+    class Meta:
+        model = ProfilePhotos
+        fields = ['profilephoto']
+        #fields = '__all__'
